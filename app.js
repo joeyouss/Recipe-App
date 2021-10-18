@@ -16,7 +16,9 @@ app.use(express.urlencoded({extended:false}))
 
 // -----
 app.get("/", async (req, res)=>{
-    const recipes = await Recipee.find()
+    const recipes = await Recipee.find().sort({
+        createdAt: 'desc'
+    })
     // const recipes = [{
     //     // we need a title, date and recipe
     //     title:"Test recipe",
