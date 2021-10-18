@@ -43,4 +43,9 @@ app.get("/", async (req, res)=>{
     res.render("recipes/index", {recipes : recipes});
 })
 app.use("/recipes", recipeRouter)
-app.listen(3000);
+
+const port = process.env.port || 3000;
+const server = app.listen(port,()=>{
+    console.log("app running on specified port");
+});
+// app.listen(3000);
