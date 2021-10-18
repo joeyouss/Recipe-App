@@ -6,27 +6,28 @@ const router = express.Router();
 // })
 
 router.get("/new", (req,res)=>{
-    const rec = await Recipe.findById(req.params.id)
-    if(rec==null) res.redirect)("/")
-    res.render("recipes/show", {recipe : recipe})
+    res.render("recipes/new", {recipe : new Recipe()})
 })
-router.get("/:id", (req,res)=>{
-    res.send(req.params.id)
+
+router.get('/:id', async (req,res)=>{
+    const rec = await Recipe.findById(req.params.id)
+    if(rec==null) res.redirect("/")
+    res.render("recipes/show", {recipe : rec})
 })
 
 router.post("/", async (req,res)=>{
-    let recipe = new Recipe({
+    let reci = new Recipe({
         title:req.body.title,
         ingredients:req.body.ingredients,
-        recipe:req.body.recipe,
+        recipea:req.body.recipes,
         createdAt:req.body.createdAt
     })
-    try{
-       recipe = await recipe.save();
-       res.redirect(`/recipes/${recipe.id}`)
-    }catch(e){
-        res.render("recipes/new", {recipe:recipe})
-    }
+       try{
+        reci = await reci.save()
+        res.redirect(`/recipes/${reci.id}`)
+       }catch(e){
+            res.render("recipes/new", {recipe: reci})
+       }
 })
 // exporting router for use
 module.exports = router;

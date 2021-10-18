@@ -8,7 +8,7 @@ const recipeSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    recipe:{
+    recipea:{
         type:String,
         required:true
     },
