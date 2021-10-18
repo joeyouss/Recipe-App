@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Recipee = require('./models/recipes')
 const app = express();
 const recipeRouter = require("./routes/recipes")
-
+const methodOverride = require("method-override")
 mongoose.connect("mongodb://localhost/recipeapp", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -13,7 +13,7 @@ mongoose.connect("mongodb://localhost/recipeapp", {
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({extended:false}))
-
+app.use(methodOverride("_method"))
 // -----
 app.get("/", async (req, res)=>{
     const recipes = await Recipee.find().sort({

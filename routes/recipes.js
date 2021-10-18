@@ -29,6 +29,12 @@ router.post("/", async (req,res)=>{
             res.render("recipes/new", {recipe: reci})
        }
 })
+
+
+router.delete("/:id", async (req, res)=>{
+    await Recipe.findByIdAndDelete(req.params.id)
+    res.redirect("/")
+})
 // exporting router for use
 module.exports = router;
 // router.get("/");
