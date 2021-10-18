@@ -4,10 +4,19 @@ const Recipee = require('./models/recipes')
 const app = express();
 const recipeRouter = require("./routes/recipes")
 const methodOverride = require("method-override")
-mongoose.connect("mongodb://localhost/recipeapp", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+
+const DB = 'mongodb+srv://joeyous:fgbjjgci@cluster0.34ov6.mongodb.net/recipesApp?retryWrites=true&w=majority'
+mongoose.connect(DB,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }).then(()=>{
+   console.log("connection successfullll");
+}) 
+// {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// })
+
 
 // ----
 
