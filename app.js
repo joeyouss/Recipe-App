@@ -1,10 +1,19 @@
 const express = require("express")
+const mongoose = require("mongoose");
 const app = express();
 const recipeRouter = require("./routes/recipes")
+
+mongoose.connect("mongodb://localhost/recipeapp", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+// ----
+
 app.set("view engine", "ejs");
-
-app.use("/recipes",recipeRouter)
-
+app.use(express.urlencoded({extended:false}))
+app.use("/recipes", recipeRouter)
+// -----
 app.get("/", (req, res)=>{
     const recipes = [{
         // we need a title, date and recipe

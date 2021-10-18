@@ -5,7 +5,7 @@
     <label for="title">
         Title
     </label>
-    <input required type="text" name="title" id="title" class="form-control">
+    <input required value="<%= recipe.title %>" type="text" name="title" id="title" class="form-control">
 </div>
 
 
@@ -13,7 +13,7 @@
     <label for="ingredients">
         Ingredients
     </label>
-    <textarea name="ingredients" id="ingredients" class="form-control" ></textarea>
+    <textarea name="ingredients" id="ingredients" class="form-control" ><%= recipe.ingredients %></textarea>
     <!-- <input required type="text" name="title" id="title" class="form-control"> -->
 </div>
 
@@ -21,7 +21,7 @@
     <label for="recipes">
         Enter your recipe
     </label>
-    <textarea name="recipes" id="recipes" class="form-control" ></textarea>
+    <textarea name="recipes" id="recipes" class="form-control" ><%= recipe.recipe %></textarea>
     <!-- <input required type="text" name="title" id="title" class="form-control"> -->
 </div>
 <a href="/" class="btn btn-secondary"> Cancel </a>
