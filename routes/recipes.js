@@ -9,8 +9,8 @@ router.get("/new", (req,res)=>{
     res.render("recipes/new", {recipe : new Recipe()})
 })
 
-router.get('/:id', async (req,res)=>{
-    const rec = await Recipe.findById(req.params.id)
+router.get('/:slug', async (req,res)=>{
+    const rec = await Recipe.findOne({slug : req.params.slug})
     if(rec==null) res.redirect("/")
     res.render("recipes/show", {recipe : rec})
 })
@@ -24,7 +24,7 @@ router.post("/", async (req,res)=>{
     })
        try{
         reci = await reci.save()
-        res.redirect(`/recipes/${reci.id}`)
+        res.redirect(`/recipes/${reci.slug}`)
        }catch(e){
             res.render("recipes/new", {recipe: reci})
        }

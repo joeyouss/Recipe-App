@@ -6,7 +6,7 @@ const recipeRouter = require("./routes/recipes")
 
 mongoose.connect("mongodb://localhost/recipeapp", {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 })
 
 // ----
